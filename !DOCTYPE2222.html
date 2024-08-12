@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Días de Cultivo</title>
+    <style>
+        body {
+            background-color: #2e7d32; /* Fondo verde */
+            color: white; /* Texto blanco */
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        a {
+            color: white; /* Hipervínculo blanco */
+            text-decoration: underline;
+        }
+        input {
+            text-align: center;
+        }
+        button {
+            background-color: #1b5e20;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Días de Cultivo de Tomate Variedades HM9098, Ensayos Ciclo Corto Patagoniafresh</h1>
+    
+    <div class="container">
+        <label for="fechaInicial">Fecha Inicial:</label>
+        <input type="date" id="fechaInicial" value="2024-05-01" readonly>
+        
+        <p>Fecha Actual: <span id="fechaActual"></span></p>
+        <p>Días de diferencia: <span id="diasDiferencia"></span></p>
+
+        <button onclick="calcularDias()">Calcular</button>
+
+        <p><a href="https://https://empresasiansa.cl/patagoniafresh/" target="_blank">Visita Patagonifresh</a></p>
+    </div>
+
+    <script>
+        function calcularDias() {
+            // Obtener la fecha inicial fija
+            const fechaInicial = new Date(document.getElementById("fechaInicial").value);
+
+            // Obtener la fecha actual
+            const fechaActual = new Date();
+            document.getElementById("fechaActual").innerText = fechaActual.toLocaleDateString();
+
+            // Cálculo de la diferencia en días
+            const diferenciaTiempo = fechaActual - fechaInicial;
+            const diasDiferencia = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24));
+
+            // Mostrar el resultado
+            document.getElementById("diasDiferencia").innerText = diasDiferencia;
+        }
+
+        // Ejecutar la función calcularDias cuando la página se carga
+        window.onload = calcularDias;
+    </script>
+</body>
+</html>
